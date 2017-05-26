@@ -1,0 +1,27 @@
+{
+  "name": "find-empty-combo",
+  "version": "0.0.1",
+  "description": "There is a list of set, try to find a combo of set which interset is empty set",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoveKino/find-empty-combo.git"
+  },
+  "keywords": [
+    "set",
+    "combo",
+    "empty"
+  ],
+  "author": "ddchen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LoveKino/find-empty-combo/issues"
+  },
+  "homepage": "https://github.com/LoveKino/find-empty-combo#readme"
+}

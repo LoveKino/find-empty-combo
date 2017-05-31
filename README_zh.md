@@ -20,7 +20,7 @@ There is a list of set, try to find a combo of set which interset is empty set
 
 ## problem
 
-There is a list of set, try to find all minimal combo of sets which interset is empty set.
+There is a list of set, try to find all minimal combo of sets which intersets is a empty set.
 
 - minimal combo
 

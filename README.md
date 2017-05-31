@@ -20,7 +20,7 @@ Install on global, using `npm i find-empty-combo -g`
 
 ## problem
 
-There is a list of set, try to find all minimal combo of sets which interset is empty set.
+There is a list of set, try to find all minimal combo of sets which intersets is a empty set.
 
 - minimal combo
 

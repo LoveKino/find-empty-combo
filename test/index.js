@@ -20,6 +20,39 @@ describe('index', () => {
 
     it('empty', () => {
         assert.deepEqual(findMinEmptyCombos([]), []);
+
+        assert.deepEqual(findMinEmptyCombos([
+            [],
+            []
+        ]), [
+            [0],
+            [1]
+        ]);
+
+        assert.deepEqual(findMinEmptyCombos([
+            [],
+            ['a']
+        ]), [
+            [0]
+        ]);
+
+        assert.deepEqual(findMinEmptyCombos([
+            [],
+            ['a'],
+            ['b']
+        ]), [
+            [0],
+            [2, 1]
+        ]);
+
+        assert.deepEqual(findMinEmptyCombos([
+            [],
+            ['b', 'v'],
+            ['b']
+        ]), [
+            [0]
+        ]);
+
         assert.deepEqual(findMinEmptyCombos([
             ['a']
         ]), []);
@@ -52,7 +85,18 @@ describe('index', () => {
             ['c']
         ]), [
             [1, 0],
-            [1, 2]
+            [1, 2],
+            [2, 0]
+        ]);
+    });
+
+    it('interset', () => {
+        assert.deepEqual(findMinEmptyCombos([
+            ['a', 'b', 'c'],
+            ['b', 'd', 'e'],
+            ['e', 'f', 'g']
+        ]), [
+            [2, 0]
         ]);
     });
 });

@@ -1,12 +1,21 @@
 'use strict';
 
 /**
- * There is a list of set, try to find a combo of set which interset is empty set
+ * @readme-doc
  *
- * {S1, S2, ..., Sn}, find Si ∩ Sj ∩ ... ∩ Sr = Ф
+ * ## problem
+ *
+ * There is a list of set, try to find all minimal combo of sets which interset is empty set.
+ *
+ * - minimal combo
+ *
+ * Let `Si1 ∩ Si1 ∩ ... ∩ Sik=Ф`, if missing set Sij (1 <= j <= k), the intersets will not be empty set.
  */
 
 /**
+ * ## basic concepts
+ *
+ * ### matrix of items and sets
  *
  * Define set F = {S1, S2, ..., Sn}.
  *
@@ -21,6 +30,24 @@
  * ∩ Vi = Ф (vice versa)
  *
  */
+
+/**
+ * @readme-quick-run
+ *
+ * ## test tar=js r_c=FindEmptyCombo
+ *
+ * let {findMinEmptyCombos} = FindEmptyCombo;
+ *
+ * let ret = findMinEmptyCombos([
+ *     ['a', 'b'], // set 0
+ *     ['d', 'e'], // set 1
+ *     ['f', 'g'], // set 2
+ *     ['h', 'k'] // set3
+ * ]);
+ *
+ * console.log(ret); // return all minimal combos, for each combo is an array of set indexs.
+ */
+
 /**
  * m * n matrix
  */

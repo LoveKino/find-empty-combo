@@ -99,4 +99,20 @@ describe('index', () => {
             [2, 0]
         ]);
     });
+
+    it('independet', () => {
+        assert.deepEqual(findMinEmptyCombos([
+            ['a', 'b'],
+            ['d', 'e'],
+            ['f', 'g'],
+            ['h', 'k']
+        ]), [
+            [1, 0],
+            [1, 2],
+            [1, 3],
+            [2, 0],
+            [2, 3],
+            [3, 0]
+        ]);
+    });
 });

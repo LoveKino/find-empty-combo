@@ -3,20 +3,20 @@
 [中文文档](./README_zh.md)   [document](./README.md)
 
 There is a list of set, try to find a combo of set which interset is empty set
-- [install](#install)
+- [安装](#%E5%AE%89%E8%A3%85)
 - [problem](#problem)
-- [usage](#usage)
-  * [API quick run](#api-quick-run)
-- [develop](#develop)
-  * [file structure](#file-structure)
-  * [run tests](#run-tests)
-- [license](#license)
+- [使用方法](#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
+  * [API 快速运行](#api-%E5%BF%AB%E9%80%9F%E8%BF%90%E8%A1%8C)
+- [开发](#%E5%BC%80%E5%8F%91)
+  * [文件结构](#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84)
+  * [运行测试用例](#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B)
+- [许可证](#%E8%AE%B8%E5%8F%AF%E8%AF%81)
 
-## install
+## 安装
 
-`npm i find-empty-combo --save` or `npm i find-empty-combo --save-dev`
+`npm i find-empty-combo --save` 或者 `npm i find-empty-combo --save-dev`
 
-Install on global, using `npm i find-empty-combo -g`
+全局安装, 使用 `npm i find-empty-combo -g`
 
 ## problem
 
@@ -26,7 +26,7 @@ There is a list of set, try to find all minimal combo of sets which interset is 
 
 Let `Si1 ∩ Si1 ∩ ... ∩ Sik=Ф`, if missing set Sij (1 <= j <= k), the intersets will not be empty set.
 
-## usage
+## 使用方法
 
 
 
@@ -35,7 +35,7 @@ Let `Si1 ∩ Si1 ∩ ... ∩ Sik=Ф`, if missing set Sij (1 <= j <= k), the inte
 
 
 
-### API quick run
+### API 快速运行
 
 
 
@@ -54,16 +54,16 @@ console.log(ret); // return all minimal combos, for each combo is an array of se
 ```
 
 ```
-output
+输出
 
     [ [ 1, 0 ], [ 1, 2 ], [ 1, 3 ], [ 2, 0 ], [ 2, 3 ], [ 3, 0 ] ]
 
 ```
 
 
-## develop
+## 开发
 
-### file structure
+### 文件结构
 
 ```
 .    
@@ -77,11 +77,11 @@ output
 ```
 
 
-### run tests
+### 运行测试用例
 
 `npm test`
 
-## license
+## 许可证
 
 MIT License
 

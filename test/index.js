@@ -1,97 +1,58 @@
 'use strict';
 
 let {
-    getContainMatrix,
-    getNotContainMatrix
+    findMinEmptyCombos
 } = require('..');
 
 let assert = require('assert');
 
 describe('index', () => {
     it('base', () => {
-        let containMatrix = getContainMatrix([
+        assert.deepEqual(findMinEmptyCombos([
+            ['a'],
+            ['a', 'b'],
+            ['c']
+        ]), [
+            [2, 0],
+            [2, 1]
+        ]);
+    });
+
+    it('empty', () => {
+        assert.deepEqual(findMinEmptyCombos([]), []);
+        assert.deepEqual(findMinEmptyCombos([
+            ['a']
+        ]), []);
+
+        assert.deepEqual(findMinEmptyCombos([
+            ['a'],
+            ['a', 'b']
+        ]), []);
+
+        assert.deepEqual(findMinEmptyCombos([
+            ['a', 'c', 'b'],
             ['a', 'b'],
             ['b', 'c']
-        ]);
-
-        let notContainMatrix = getNotContainMatrix(containMatrix, 2);
-
-        assert.deepEqual(containMatrix, {
-            a: {
-                '0': 1
-            },
-            b: {
-                '0': 1,
-                '1': 1
-            },
-            c: {
-                '1': 1
-            }
-        });
-
-        assert.deepEqual(notContainMatrix, {
-            a: {
-                '1': 1
-            },
-            b: {},
-            c: {
-                '0': 1
-            }
-        });
+        ]), []);
     });
 
-    it('containMap', () => {
-        let containMatrix = getContainMatrix([
+    it('single', () => {
+        assert.deepEqual(findMinEmptyCombos([
             ['a'],
+            ['b']
+        ]), [
+            [1, 0]
         ]);
-
-        let notContainMatrix = getNotContainMatrix(containMatrix, 1);
-
-        assert.deepEqual(containMatrix, {
-            a: {
-                '0': 1
-            }
-        });
-
-        assert.deepEqual(notContainMatrix, {
-            a: {}
-        });
     });
 
-    it('containMap2', () => {
-        let containMatrix = getContainMatrix([
+    it('single2', () => {
+        assert.deepEqual(findMinEmptyCombos([
             ['a'],
             ['b'],
             ['c']
+        ]), [
+            [1, 0],
+            [1, 2]
         ]);
-
-        let notContainMatrix = getNotContainMatrix(containMatrix, 3);
-
-        assert.deepEqual(containMatrix, {
-            a: {
-                '0': 1
-            },
-            b: {
-                '1': 1
-            },
-            c: {
-                '2': 1
-            }
-        });
-
-        assert.deepEqual(notContainMatrix, {
-            a: {
-                '1': 1,
-                '2': 1
-            },
-            b: {
-                '0': 1,
-                '2': 1
-            },
-            c: {
-                '0': 1,
-                '1': 1
-            }
-        });
     });
 });

@@ -21,69 +21,91 @@
  * ∩ Vi = Ф (vice versa)
  *
  */
-
 /**
- * set is an array of strings
- *
- * setList = {S1, S2, ..., Sn}
- * itemList = {a1, a2, ..., am}
- *
- * O(m * n)
- *
- * 1. search item doesn't containing sets
- * 2. search set doesn't containing items
+ * m * n matrix
  */
-let getContainMatrix = (setList) => {
-    let itemContainMap = {};
-    let itemNotContainMap = {};
-
+let getBelongMatrix = (setList) => {
     let setListLen = setList.length;
+    let itemMap = {};
 
     for (let i = 0; i < setListLen; i++) {
         let set = setList[i];
         let setLen = set.length;
-
         for (let j = 0; j < setLen; j++) {
             let item = set [j];
-            let map = itemContainMap[item] = itemContainMap[item] || {};
-            map[i] = 1;
+            let belongList = itemMap[item] = itemMap[item] || new Array(setLen);
+            belongList[i] = 1;
         }
     }
 
-    // calculate not contain map
-    for (let item in itemContainMap) {
-        let map = itemNotContainMap[item] = {};
-
-        let list = itemContainMap[item];
-        for (let i = 0; i < setListLen; i++) {
-            if (!list[i]) {
-                map[i] = 1;
-            }
-        }
+    let matrix = [],
+        items = [];
+    for (let item in itemMap) {
+        items.push(item);
+        matrix.push(itemMap[item]);
     }
 
-    return itemContainMap;
+    return {
+        matrix, items
+    };
 };
 
-let getNotContainMatrix = (itemContainMap, setListLen) => {
-    let itemNotContainMap = {};
+let findMinEmptyCombosByMatrix = (matrix, rows, setLen) => {
+    let result = [];
 
-    // calculate not contain map
-    for (let item in itemContainMap) {
-        let map = itemNotContainMap[item] = {};
+    let firstRow = rows[0];
+    let firstBelongList = matrix[firstRow];
 
-        let list = itemContainMap[item];
-        for (let i = 0; i < setListLen; i++) {
-            if (!list[i]) {
-                map[i] = 1;
+    for (let i = 0; i < setLen; i++) {
+        let item = firstBelongList[i];
+        if (item !== 1) {
+            // step1 cross lines
+            let newRows = [];
+
+            let rowLen = rows.length;
+            for (let j = 0; j < rowLen; j++) {
+                let row = rows[j];
+                if (matrix[row][i] === 1) {
+                    newRows.push(row);
+                }
+            }
+
+            rows = newRows; // won't include ith set any more
+
+            if (!rows.length) {
+                result.push([i]);
+            } else {
+                // step2 get rest
+                let next = findMinEmptyCombosByMatrix(matrix, rows, setLen);
+                let nextLen = next.length;
+
+                for (let j = 0; j < nextLen; j++) {
+                    let nextItem = next[j];
+                    nextItem.unshift(i);
+                    result.push(nextItem);
+                }
             }
         }
     }
 
-    return itemNotContainMap;
+    return result;
+};
+
+let findMinEmptyCombos = (setList) => {
+    let {
+        matrix
+    } = getBelongMatrix(setList);
+    let initRows = [];
+    let matrixLen = matrix.length;
+    for (let i = 0; i < matrixLen; i++) {
+        initRows.push(i);
+    }
+
+    return findMinEmptyCombosByMatrix(matrix, initRows, setList.length);
 };
 
 module.exports = {
-    getContainMatrix,
-    getNotContainMatrix
+    getBelongMatrix,
+    findMinEmptyCombos,
+    findMinEmptyCombosByMatrix
 };
